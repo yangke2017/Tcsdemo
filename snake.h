@@ -9,7 +9,7 @@
 #include "stddef.h"
 //#include "qdebug.h"
 
-class Snake : public QThread
+class Snake : public QThread  //ºÃ≥–QThreadœﬂ≥Ã¿‡
 {
     Q_OBJECT
 signals:

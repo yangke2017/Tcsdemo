@@ -12,7 +12,7 @@
 
 
 
-class Gamecanvas : public QWidget
+class Gamecanvas : public QWidget  //¼Ì³ÐQWidge´°¿ÚÀà
 {
     Q_OBJECT
 public:
@@ -22,14 +22,13 @@ public:
     TcsBox* getBox(int row,int col);
     void reset();
     void paintEvent(QPaintEvent *event);
-    void keyPressEvent(QKeyEvent *e);
 
 private:
     TcsBox boxs[20][30];
     //TcsBox (*p)[30] = boxs;
 
 
-    int boxwidth, boxheight;
+    double boxwidth, boxheight;
     int x, y, k = 0;
     QColor frontColor;
     QColor backColor;
