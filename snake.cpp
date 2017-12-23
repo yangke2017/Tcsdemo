@@ -102,7 +102,24 @@ bool Snake::moveTo(int newRow, int newCol)
            x = newRow;  //新的蛇头位置为 （newRow，newCol）
            y = newCol;
 
-           snake.insert(0, (*canvas).getBox(x, y));  //蛇头前面加一块box
+          snake.insert(0, (*canvas).getBox(x, y));  //蛇头前面加一块box
+
+		  switch (direction) {
+		  case ('r'):
+			  moveright();
+			  break;
+		  case ('l'):
+			  moveleft();
+			  break;
+		  case ('d'):
+			  moveup();
+			  break;
+		  case ('u'):
+			  movedown();
+			  break;
+		  default:
+			  break;
+		  }
 
           food = Food(canvas);        //新建食物
           qDebug() << snake.size();   //控制台输出snake链表的元素个数
@@ -131,19 +148,23 @@ bool Snake::moveTo(int newRow, int newCol)
 //判断蛇头是不是可以移动到新的位置。蛇碰到自己不死bug出在这里
 bool Snake::isMoveAble(int newRow, int newCol)
 {
-    TcsBox box = canvas->getBox(newRow, newCol);
+    TcsBox* box = canvas->getBox(newRow, newCol);
 
+	for (int i = 0; i < snake.size(); i++)
+	{
+		if (box == snake.at(i))
+			return false;
+	}
     if (box == NULL)
         return false;
-
-
-
-    else if (box.isIscolor())
-    {
-        return true;
-    }
-    else
-        return true;
+   // else if (snake.contains(box))
+	//else if (box == snake.at)
+    //{
+    //    return false;
+    //}
+	else
+	   return true;
+    
 }
 
 //把蛇从UI显示，把snake的box的iscolor参数设置为true
